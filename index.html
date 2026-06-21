@@ -221,15 +221,14 @@ function irAWhatsApp() {
     return;
   }
 
-  // Evento de Conversión para Facebook Ads
-  fbq('track', 'Lead', {
+  // --- CORRECCIÓN CLAVE PARA CAMPAÑA DE VENTAS ---
+  fbq('track', 'Purchase', {
     content_name: 'Registro Good Luck',
     value: 1.0,
     currency: 'USD'
   });
 
   // --- CONFIGURACIÓN DEL ROTADOR ---
-  // Reemplazá acá abajo los números por tus líneas reales conectadas a Whaticket:
   const listaNumeros = [
     "5492235337483", // Número Principal
     "5492235000000", // Número Contingencia 2
@@ -245,10 +244,8 @@ function irAWhatsApp() {
   const esCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   if (esCelular) {
-    // Abre la app directo en iPhone y Android sin pasar por pantallas intermedias
     url = `whatsapp://send?phone=${numeroElegido}&text=` + encodeURIComponent(mensaje);
   } else {
-    // Formato optimizado para computadoras de escritorio
     url = `https://web.whatsapp.com/send?phone=${numeroElegido}&text=` + encodeURIComponent(mensaje);
   }
 
